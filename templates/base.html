@@ -9,7 +9,9 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Clean Blog - Start Bootstrap Theme</title>
+  <title>{% block head_title %}{% endblock head_title %}</title>
+    {% block extra_head %}
+    {% endblock extra_head %}
 
   <!-- Bootstrap core CSS -->
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -21,12 +23,53 @@
 
   <!-- Custom styles for this template -->
   <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+  
+  <link href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+          <a class="navbar-brand" href="/">Start Bootstrap</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/">Sample Post</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    {% if messages %}
+    <div>
+      <strong>Messages:</strong>
+      <ul>
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
     {% block content %}
 
+    {% endblock %}
+
+    {% block extra_body %}
+    
     {% endblock %}
     <!-- Footer -->
     <footer>
